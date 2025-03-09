@@ -1,5 +1,7 @@
 **/outputs/
 **/logs/
+**/slurm-logs/
+**/slurm-scripts/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
