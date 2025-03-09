@@ -1,0 +1,25 @@
+gpu_priority: [
+  "nvidia_h100",
+  "nvidia_a100",
+  "nvidia_l40",
+  "nvidia_a40",
+  "nvidia_geforce_rtx_3090",
+  "nvidia_a30",
+  "nvidia_rtx_a4000",
+  "quadro_rtx_5000",
+  "quadro_p5000",
+]
+
+default_gpu: "nvidia_a40"
+job_name: "whisperlv2"
+
+bash_script_dir: /lnet/express/work/people/stankov/parczech/slurm-scripts/${job_name}
+slurm_logs_dir: /lnet/express/work/people/stankov/parczech/slurm-logs/${job_name}
+
+template_script: /lnet/express/work/people/stankov/parczech/assets/recognize_job_default.template
+
+n_debug: 3
+n_jobs: -1
+job_config: recognize
+
+metadata_df: /lnet/troja/work/people/stankov/parczech4speechmodeling/audioPSP-meta.quarterArchive.tsv
