@@ -48,12 +48,13 @@ def main(cfg):
         links = '"[' + ",".join(link_chunk) + ']"'
         gpu = get_best_gpu(cfg.gpu_priority, cfg.default_gpu)
         instance = template.format(
+            id=i,
+            gpu=gpu,
+            links=links,
             n_debug=cfg.n_debug,
             config=cfg.job_config,
-            links=links,
-            gpu=gpu,
-            id=i,
             slurm_logs_dir=cfg.slurm_logs_dir,
+            output_folder=cfg.output_folder,
         )
         with open(Path(cfg.bash_script_dir, script_name), "w") as f:
             f.write(instance)

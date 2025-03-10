@@ -1,4 +1,4 @@
-output_folder: /lnet/troja/work/people/stankov/parczech4speechmodeling
+output_folder: ???
 meta_data_df: /lnet/troja/work/people/stankov/parczech4speechmodeling/audioPSP-meta.audioFile.tsv
 urls_df: /lnet/troja/work/people/stankov/parczech4speechmodeling/audioPSP-meta.quarterArchive.tsv
 
