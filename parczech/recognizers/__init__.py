@@ -1,0 +1,1 @@
+from .default_whisper_recognizer import DefaultWhisperRecognizer

@@ -1,0 +1,27 @@
+output_folder: ???
+meta_data_df: /lnet/troja/work/people/stankov/parczech4speechmodeling/audioPSP-meta.audioFile.tsv
+urls_df: /lnet/troja/work/people/stankov/parczech4speechmodeling/audioPSP-meta.quarterArchive.tsv
+
+links: ???
+
+overwrite_tar: False
+overwrite_recognized: False
+
+n_debug: 5
+
+recognizers:
+  - _target_: parczech.recognizers.DefaultWhisperRecognizer
+    name: "default_whisperlv2_no_numerals"
+    device: "cuda"
+    suppress_numerals: True
+    model_name: "large-v2"
+    num_workers: 12
+  
+  - _target_: parczech.recognizers.DefaultWhisperRecognizer
+    name: "default_whisperlv2_with_numerals"
+    device: "cuda"
+    suppress_numerals: False
+    model_name: "large-v2"
+    num_workers: 12
+
+

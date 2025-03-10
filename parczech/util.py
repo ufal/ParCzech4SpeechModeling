@@ -1,4 +1,7 @@
 
+import torch
+
+
 # choose best segment len, so the last input is not too short
 def set_segment_len(start_range, end_range, mp3_frames_cnt, sample_rate, overlap_len_sec):
     best_segment_len = start_range
@@ -58,3 +61,13 @@ def find_undesired_symbol_tokens(tokenizer, undesired_symbols='!"%&\'()*+,-./:;=
         if has_udesired_symbol:
             udesired_symbol_tokens.append(i)
     return udesired_symbol_tokens
+
+
+def get_batch_size():
+    if not torch.cuda.is_available():
+        return {"error": "CUDA not available"}
+
+    total_memory = torch.cuda.get_device_properties(0).total_memory
+    total_gb = total_memory / (1024 ** 3)
+
+    return int(total_gb / 2)
