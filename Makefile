@@ -5,8 +5,13 @@ parczechAnaURL:=https://lindat.mff.cuni.cz/repository/xmlui/bitstream/handle/$(p
 parczechAnaFilePath := $(data)/$(parczechAnaFilename)
 parczechAnaDirPath := $(data)/ParCzech.TEI.ana
 parczechAnaRootPath := $(parczechAnaDirPath)/ParCzech.ana.xml
+tsvDirPath := $(data)/ParCzechTSV
+
+JAVA-MEMORY =
+JM := $(shell test -n "$(JAVA-MEMORY)" && echo -n "-Xmx$(JAVA-MEMORY)g")
 
 saxon := ./scripts/bin/saxon.jar
+s = java $(JM) -jar $(saxon)
 
 ### check and install prerequisites
 
@@ -22,6 +27,7 @@ prereq-setup-saxon:
 	@mkdir -p ./scripts/bin/
 	@wget -O saxon.zip https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-5/SaxonHE12-5J.zip
 	@unzip -p saxon.zip saxon-he-12.5.jar > ./scripts/bin/saxon.jar
+	@unzip saxon.zip lib/* -d ./scripts/bin/
 	@rm saxon.zip
 	@echo "Saxon installed in $(saxon)"
 
@@ -40,7 +46,11 @@ prepare-parczech-data: parczech-unpack
 
 ### converting to TSV
 
-
+parczech2tsv:
+	mkdir -p $(tsvDirPath)
+	find $(parczechAnaDirPath)/ -type f | grep 'ps[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9]' \
+	  | xargs -I {} $s -xsl:./scripts/parczech2tsv.xsl {} \
+	  | perl ./scripts/parczech2audio-corresp-tsv.pl "$(tsvDirPath)"
 
 
 
