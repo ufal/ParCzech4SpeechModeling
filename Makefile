@@ -54,5 +54,5 @@ parczech2tsv:
 	  | perl ./scripts/parczech2audio-corresp-tsv.pl "$(tsvDirPath)"
 
 slurm-parczech2tsv:
-	sbatch --job-name=pc2tsv --mem=64G --cpus-per-task=64 scripts/slurm-cpu.sh "make parczech2tsv"
+	sbatch --job-name=pc2tsv --mem=64G --cpus-per-task=64 scripts/slurm_cpu.sh "make parczech2tsv"
 
