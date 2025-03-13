@@ -9,10 +9,11 @@ tsvDirPath := $(data)/ParCzechTSV
 
 JAVA-MEMORY =
 JM := $(shell test -n "$(JAVA-MEMORY)" && echo -n "-Xmx$(JAVA-MEMORY)g")
+THREADS = 1
 
 saxon := ./scripts/bin/saxon.jar
 s = java $(JM) -jar $(saxon)
-
+p = parallel --keep-order --gnu --halt 0 --jobs $(THREADS)
 ### check and install prerequisites
 
 check-prereq:
@@ -48,8 +49,8 @@ prepare-parczech-data: parczech-unpack
 
 parczech2tsv:
 	mkdir -p $(tsvDirPath)
-	find $(parczechAnaDirPath)/ -type f | grep 'ps[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9]' \
-	  | xargs -I {} $s -xsl:./scripts/parczech2tsv.xsl {} \
+	$s -xsl:./scripts/get-includes.xsl context-elements="teiCorpus" $(parczechAnaRootPath) | sed "s#^#$(parczechAnaDirPath)/#" \
+	  | $p "$s -xsl:./scripts/parczech2tsv.xsl {}" \
 	  | perl ./scripts/parczech2audio-corresp-tsv.pl "$(tsvDirPath)"
 
 

@@ -9,7 +9,7 @@
     <xsl:template match="tei:pb">
         <xsl:text># AUDIO: </xsl:text>
         <xsl:variable name="audio-id" select="substring-after(@corresp,'#')" />
-        <xsl:value-of select="//tei:media[@xml:id=$audio-id]/@source" />
+        <xsl:value-of select="//tei:media[@xml:id=$audio-id]/@url" />
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>
       <xsl:variable name="date" select="/tei:TEI//tei:settingDesc/tei:setting/tei:date[contains(concat(' ',./@ana,' '),' #parla.sitting ')]/@when"/>
