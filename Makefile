@@ -53,5 +53,6 @@ parczech2tsv:
 	  | $p "$s -xsl:./scripts/parczech2tsv.xsl {}" \
 	  | perl ./scripts/parczech2audio-corresp-tsv.pl "$(tsvDirPath)"
 
-
+slurm-parczech2tsv:
+	sbatch --job-name=pc2tsv --mem=64G --cpus-per-task=64 scripts/slurm-cpu.sh "make parczech2tsv"
 
