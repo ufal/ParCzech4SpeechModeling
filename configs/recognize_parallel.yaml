@@ -10,9 +10,9 @@ gpu_priority: [
   "quadro_p5000",
 ]
 
-default_gpu: "nvidia_a40"
 job_name: ???
 
+overwrite_recognized: False
 bash_script_dir: /lnet/express/work/people/stankov/parczech/slurm-scripts/${job_name}
 slurm_logs_dir: /lnet/express/work/people/stankov/parczech/slurm-logs/${job_name}
 

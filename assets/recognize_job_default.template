@@ -22,5 +22,5 @@ echo "Job started at: $(date)"
 echo "Allocated GPU: $CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
-python /lnet/express/work/people/stankov/parczech/scripts/recognize.py --config-name={config} \
+python /lnet/express/work/people/stankov/parczech/scripts/recognize.py --config-name={config} overwrite_recognized={overwrite_recognized} \
 links={links} output_folder={output_folder} n_debug={n_debug}

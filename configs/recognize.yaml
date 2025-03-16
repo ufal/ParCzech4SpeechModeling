@@ -15,13 +15,13 @@ recognizers:
     device: "cuda"
     suppress_numerals: True
     model_name: "large-v2"
-    num_workers: 12
+    num_workers: 0
   
   - _target_: parczech.recognizers.DefaultWhisperRecognizer
     name: "default_whisperlv2_with_numerals"
     device: "cuda"
     suppress_numerals: False
     model_name: "large-v2"
-    num_workers: 12
+    num_workers: 0
 
 
