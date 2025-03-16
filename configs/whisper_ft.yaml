@@ -1,0 +1,45 @@
+# possible options:
+# openai/whisper-tiny     39M
+# openai/whisper-base     74M
+# openai/whisper-small    244M
+# openai/whisper-medium   769M
+# openai/whisper-large    1550M
+# openai/whisper-large-v2 1550M
+# openai/whisper-large-v3 1550M
+
+model_type: openai/whisper-large-v2
+seed: 42
+dataset_params:
+  name: mozilla-foundation/common_voice_11_0
+  sr: 16000
+  num_proc: 16
+
+training_args:
+  _target_: transformers.Seq2SeqTrainingArguments
+  output_dir: /lnet/troja/work/people/stankov/parczech4speechmodeling/whisper-ft
+  per_device_train_batch_size: 32
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 1
+  eval_delay: 0
+  warmup_steps: 10
+  max_steps: 500
+  gradient_checkpointing: True
+  # bf16: True
+  evaluation_strategy: steps
+  predict_with_generate: True
+  generation_max_length: 1024
+  save_steps: 100
+  eval_steps: 5
+  logging_steps: 25
+  report_to: "tensorboard"
+  load_best_model_at_end: True
+  metric_for_best_model: wer
+  greater_is_better: False
+  push_to_hub: False
+  dataloader_num_workers: 12
+  seed: ${seed}
+  data_seed: ${seed}
+  full_determinism: True
+  # eval_on_start: True
+
+
