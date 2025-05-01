@@ -1,6 +1,13 @@
 
 import torch
+from pathlib import Path
 
+def get_all_mp3_files(path):
+    mp3_files = []
+    for file in Path(path).rglob("*.mp3"):
+        if file.is_file():
+            mp3_files.append(file)
+    return mp3_files
 
 # choose best segment len, so the last input is not too short
 def set_segment_len(start_range, end_range, mp3_frames_cnt, sample_rate, overlap_len_sec):
