@@ -1,0 +1,8 @@
+output_directory: /lnet/troja/work/people/stankov/parczech4speechmodeling/alignment
+recognized_base_path: /lnet/troja/work/people/stankov/parczech4speechmodeling/audio/psp
+
+bash_script_dir: /lnet/work/people/stankov/parczech/slurm-scripts/alignment/
+slurm_logs_dir: /lnet/work/people/stankov/parczech/slurm-logs/alignment/
+template_script: /lnet/work/people/stankov/parczech/assets/align_job.template
+
+model_names: ["default_whisperlv2_with_numerals", "default_whisperlv2_no_numerals"]

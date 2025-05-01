@@ -1,0 +1,21 @@
+year: ???
+month: ???
+model_names: ???
+output_directory: ???
+n_cores: 16
+recognized_base_path: /lnet/troja/work/people/stankov/parczech4speechmodeling/audio/psp
+vertical_base_path: /net/work/people/kopp/ParCzech4SpeechModeling/data/ParCzechTSV/tsv/psp
+gap_char: "<gap>"
+default_edit_distance: 1000
+punctuations: ['¨', '—', '·', '´', '‘', '…', "'", '(', ';', ')', '!', '"', ':', '?', '-', '.', ',']
+vert_columns: [
+  "token_str",
+  "token_id",
+  "speaker_id",
+  "speech_id",
+  "date",
+  "is_no_space_after_token",
+  "is_token_word",
+  "start_time",
+  "end_time",
+]
