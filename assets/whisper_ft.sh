@@ -10,8 +10,8 @@
 # Number of GPUs
 #SBATCH --gres=gpu:nvidia_h100:1
 
-
-conda_path=/lnet/express/work/people/stankov/miniconda3/bin/conda
+export HF_HOME=/lnet/work/people/stankov/huggingface_cache
+conda_path=/lnet/work/people/stankov/miniconda3/bin/conda
 export PATH=$conda_path:$PATH
 eval "$(conda shell.bash hook)"
 
@@ -19,4 +19,4 @@ nvidia-smi
 
 conda activate whisperx
 
-python /lnet/express/work/people/stankov/parczech/scripts/whisper_ft.py 
+python /lnet/work/people/stankov/parczech/scripts/whisper_ft.py 
