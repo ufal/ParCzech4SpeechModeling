@@ -48,7 +48,8 @@ class MySeq2SeqTrainer(Seq2SeqTrainer):
         except Exception as e:
             # print(f"Error: {e}")
             print(inputs["input_features"].shape, inputs["labels"].shape, self.my_tokenizer.decode(inputs["labels"][0], skip_special_tokens=False))
-            raise e
+            return None, None, None
+
 
 @hydra.main(config_path="../configs", config_name="whisper_ft")
 def main(cfg):
