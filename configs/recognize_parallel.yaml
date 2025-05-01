@@ -13,10 +13,10 @@ gpu_priority: [
 job_name: ???
 
 overwrite_recognized: False
-bash_script_dir: /lnet/express/work/people/stankov/parczech/slurm-scripts/${job_name}
-slurm_logs_dir: /lnet/express/work/people/stankov/parczech/slurm-logs/${job_name}
+bash_script_dir: /lnet/work/people/stankov/parczech/slurm-scripts/${job_name}
+slurm_logs_dir: /lnet/work/people/stankov/parczech/slurm-logs/${job_name}
 
-template_script: /lnet/express/work/people/stankov/parczech/assets/recognize_job_default.template
+template_script: /lnet/work/people/stankov/parczech/assets/recognize_job_default.template
 
 n_debug: 3
 n_jobs: -1

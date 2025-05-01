@@ -130,7 +130,7 @@ packaging==24.2
 pandas==2.2.3
 pandocfilters==1.5.1
 # Editable Git install with no remote (parczech==0.1)
--e /lnet/express/work/people/stankov/parczech
+-e /lnet/work/people/stankov/parczech
 parso==0.8.4
 pexpect==4.9.0
 pillow==11.0.0

@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -J whisper-ft-debug
-#SBATCH -D /lnet/express/work/people/stankov/parczech/slurm-logs/whisper_ft_debug
+#SBATCH -D /lnet/work/people/stankov/parczech/slurm-logs/whisper_ft_debug
 #SBATCH -o large.out
 #SBATCH -e large.out
 #SBATCH -p gpu-troja,gpu-ms

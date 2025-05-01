@@ -1,4 +1,4 @@
-mp3_source: "/lnet/express/work/people/stankov/parczech-data-lindat"
+mp3_source: "/lnet/work/people/stankov/parczech-data-lindat"
 segment_len_sec: 24
 overlap_len_sec: 5
 discard_n_words: 2
