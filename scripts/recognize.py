@@ -39,10 +39,11 @@ def main(cfg):
                 if output_path.exists() and not cfg.overwrite_recognized:
                     print(f"File {output_path.as_posix()} already exists. Skipping recognition.")
                     continue
-                predicted_vertical = recognizer(file_path)
-                predicted_vertical_df = pd.DataFrame(predicted_vertical)
 
-                predicted_vertical_df.to_csv(output_path, sep="\t", index=False,)
+                predicted_vertical = recognizer(file_path)
+                if predicted_vertical is not None:
+                    predicted_vertical_df = pd.DataFrame(predicted_vertical)
+                    predicted_vertical_df.to_csv(output_path, sep="\t", index=False,)
 
     print(f"Done. Debug mode is {debug_mode}.")
 

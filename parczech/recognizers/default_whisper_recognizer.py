@@ -29,7 +29,12 @@ class DefaultWhisperRecognizer:
 
 
     def __call__(self, file_path):
-        audio = load_audio(file_path.as_posix())
+        try:
+            audio = load_audio(file_path.as_posix())
+        except Exception as e:
+            if "Failed to load audio" in str(e):
+                print(f"Skipping corrupt/invalid audio file: {file_path}")
+                return None
         segment_result = self.model.transcribe(audio, batch_size=self.batch_size, num_workers=self.num_workers)
         aligned = align(
             segment_result["segments"],
