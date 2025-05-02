@@ -31,8 +31,13 @@ def main(cfg):
         job_lst = []
 
         for vertical_file, recognized_file in zip(vertical_files, recognized_files):
-            if not Path(recognized_file).exists() or not Path(vertical_file).exists():
-                raise ValueError(f"File {recognized_file} does not exist.")
+            if not Path(recognized_file).exists():
+                print(f"File {recognized_file} does not exist. Skipping.")
+                continue
+
+            if not Path(vertical_file).exists():
+                print(f"File {vertical_file} does not exist. Skipping.")
+                continue
 
             job = {
                 "vert_path": vertical_file,
@@ -45,16 +50,24 @@ def main(cfg):
             job_lst.append(job)
 
         result_dfs = []
+
+        output_dir = Path(cfg.output_directory, model_name)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_file = Path(output_dir, f"{cfg.year}_{cfg.month}.parquet")
+
+        if Path(output_file).exists() and not cfg.overwrite:
+            print(f"File {output_file} already exists. Skipping.")
+            continue
+
         with Pool(processes=cfg.n_cores - 1) as pool:
             result_dfs = list(tqdm(pool.imap(process_job, job_lst),
                           total=len(job_lst),
                           desc=f"Aligning {model_name}"))
 
-        final_df = pd.concat(result_dfs, ignore_index=True)
-        output_dir = Path(cfg.output_directory, model_name)
-        output_dir.mkdir(parents=True, exist_ok=True)
+        final_df = pd.concat([x for x in result_dfs if x is not None], ignore_index=True)
 
-        final_df.to_parquet(Path(output_dir, f"{cfg.year}_{cfg.month}.parquet"))
+
+        final_df.to_parquet(output_file, index=False)
         print(f"Saved {model_name} results to {output_dir}/{cfg.year}_{cfg.month}.parquet")
 
 

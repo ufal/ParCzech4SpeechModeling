@@ -2,11 +2,12 @@ year: ???
 month: ???
 model_names: ???
 output_directory: ???
-n_cores: 16
+n_cores: 12
 recognized_base_path: /lnet/troja/work/people/stankov/parczech4speechmodeling/audio/psp
 vertical_base_path: /net/work/people/kopp/ParCzech4SpeechModeling/data/ParCzechTSV/tsv/psp
 gap_char: "<gap>"
 default_edit_distance: 1000
+overwrite: False
 punctuations: ['¨', '—', '·', '´', '‘', '…', "'", '(', ';', ')', '!', '"', ':', '?', '-', '.', ',']
 vert_columns: [
   "token_str",

@@ -43,7 +43,12 @@ def align(
         header=None,
         quoting=3,
     ).dropna(subset=["token_str"])
-    rec_df = pd.read_csv(recognized_path, sep="\t").dropna(subset=["word"])
+    
+    try:
+        rec_df = pd.read_csv(recognized_path, sep="\t").dropna(subset=["word"])
+    except pd.errors.EmptyDataError:
+        print(f"Warning: Empty file encountered at {recognized_path}")
+        return None
 
     alignment = pairwise2.align.globalcx(
         vert_df["token_str"].str.lower().tolist(),
