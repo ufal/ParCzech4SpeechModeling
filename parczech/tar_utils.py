@@ -49,10 +49,26 @@ def extract_tar_file(tar_path):
         tar_path (str): Path to the .tar file.
     """
     # Ensure the output folder exists
+    extraction_dir = Path(tar_path).parent
 
     try:
         # Open the .tar file
         with tarfile.open(tar_path, "r") as tar:
+            tar_files = set(tar.getnames())
+
+            # Check if any files are missing in extraction directory
+            missing_files = [
+                f for f in tar_files 
+                if not (extraction_dir / f).exists()
+            ]
+
+            if not missing_files:
+                print(f"Files already extracted to {extraction_dir}")
+                return
+
+            # Extract only if files are missing
+            print(f"Extracting {tar_path} to {extraction_dir}")
+
             tar.extractall(path=tar_path.parent)  # Extract all files
     except tarfile.TarError as e:
         print(f"Failed to extract {tar_path}: {e}")
