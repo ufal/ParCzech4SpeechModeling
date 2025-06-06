@@ -1,27 +1,19 @@
-gpu_priority: [
-  "nvidia_h100",
-  "nvidia_a100",
-  "nvidia_l40",
-  "nvidia_a40",
-  "nvidia_geforce_rtx_3090",
-  "nvidia_a30",
-  "nvidia_rtx_a4000",
-  "quadro_rtx_5000",
-  "quadro_p5000",
-]
+template_script: /lnet/work/people/stankov/parczech/assets/gpu_job.template
+script: /lnet/work/people/stankov/parczech/scripts/recognize.py
 
-job_name: ???
+job_name: parcz_rec
+cpus: 16
+mem: 32
+n_gpus: 1
 
-overwrite_recognized: False
 bash_script_dir: /lnet/work/people/stankov/parczech/slurm-scripts/${job_name}
 slurm_logs_dir: /lnet/work/people/stankov/parczech/slurm-logs/${job_name}
 
-template_script: /lnet/work/people/stankov/parczech/assets/recognize_job_default.template
-
-n_debug: 3
 n_jobs: -1
-job_config: recognize
 
 metadata_df: /lnet/troja/work/people/stankov/parczech4speechmodeling/audioPSP-meta.quarterArchive.tsv
 
-output_folder: /lnet/troja/work/people/stankov/parczech4speechmodeling
+params:
+  output_folder: /lnet/troja/work/people/stankov/parczech4speechmodeling
+  overwrite_recognized: False
+  n_debug: 3
