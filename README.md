@@ -1,13 +1,65 @@
 # ParCzech4SpeechModeling
 
-## Recognition of ParCzech4 using WhisperX
-Use the following scripts:
+We introduce **ParCzech4Speech 1.0**, a processed version of the ParCzech 4.0 corpus, tailored for speech modeling tasks. The largest variant of the dataset contains 2,695 hours of aligned audio-text data. We combined the sound recordings of Czech parliamentary speeches with their official transcripts. Audio was processed using WhisperX and Wav2Vec 2.0 to extract automated word-level alignments.
 
-* [recognize.py](/scripts/recognize.py) - For given links downloads `.tar` files, extracts them into the common directory and runs the recognition for a recognizers specified in [recognize.yaml](/configs/recognize.yaml). For debug purposes you can set `n_debug` to a number greater than 0, this corresponds to the number of files in the first link that will be recognized by all recognizers in the config. Required parameters are `links` and `output_folder`.
-* [recognize_parallel.py](/scripts/recognize_parallel.py) - This is a wrapper for `recognize.py` that given all links creates `n_jobs` slurm jobs with `recognize.py` script with its own config [recognize_parallel.yaml](/configs/recognize_parallel.yaml). Recognition is done on the GPU cluster. Use `n_debug` for debugging purposes, it will be propagated to `recognize.py`. The default number of slurm jobs is specified by `n_jobs` in the config, with -1 corresponding to the number of links (each `recognize.py` job will process one link). Required parameter is `job_name` that will be used as a prefix for the slurm jobs. 
+---
 
-The results will be stored in the `output_folder` specified in the [recognize_parallel.yaml](/configs/recognize_parallel.yaml), that will be propagated to `recognize.py`. As for now it is `/lnet/troja/work/people/stankov/parczech4speechmodeling`. There you can find:
+## Installation
 
-* `.tar` files for each downloaded quarter.
-* `audioPSP-meta.audioFile.tsv` and `audioPSP-meta.quarterArchive.tsv`, two files with the metadata about the original ParCzech4 dataset (audio information only).
-* `audio` directory with all audio files and transcripts. Relative path to the audio can be find in `audioPSP-meta.audioFile.tsv` in the column `filePath`. The recognized texts will share the same relative path and will be stored in `.tsv` files. The suffix in the naming displays the recognizer type.
+You would need Python 3.10.16.
+
+```
+git clone https://github.com/ufal/ParCzech4SpeechModeling.git
+cd parczech
+pip install -r requirements.txt
+pip install -e .
+```
+---
+
+## Repository Structure
+
+The repository is organized as follows:
+
+- `scripts/` — Scripts for downloading, processing, aligning, and recognizing the ParCzech4 dataset.
+- `parczech/` — Common utility functions used in the scripts.
+- `configs/` — Configuration files for the recognition and alignment scripts.
+- `assets/` — Templates and example files.
+- `notebooks/` — Jupyter notebooks for exploring the source and processed datasets, and for further experimentation.
+
+Scripts, configs, and assets are designed to support **parallel processing** of the dataset. For instance, `align.py` is paired with `align_parallel.py`, which is used to submit multiple SLURM jobs for parallel execution of `align.py`. This pattern is used for other scripts as well. All scripts are parametrized using **Hydra**, with configuration files located in the `configs/` directory. Configs for both parallel and single-job execution are stored in the same directory and can be distinguished by the script names they are associated with.
+
+---
+
+## Main Scripts
+
+Below is a list of the core (non-parallel) scripts for processing the ParCzech4 dataset. Parallel versions are wrappers for launching jobs on a SLURM cluster.
+
+- `recognize.py` — Performs ASR on the dataset using WhisperX and Wav2Vec 2.0.
+- `align.py` — Aligns recognized texts with official transcripts at the word level.
+- `alignment_stats.py` — Computes statistics on alignment quality for a specified version of the dataset (segmented or unsegmented). Note: only a subset of data is used at this stage.
+- `create_hf_dataset.py` — Creates a Hugging Face dataset by extracting aligned segments and applying corpus-level filtering.
+- `infer_asr.py` — Runs an ASR model on the final dataset for quality verification and removal of misaligned segments.
+- `get_duration.py` — Computes durations of dataset segments.
+
+### Pipeline Order
+
+Run the pipeline in the following order:
+
+1. `recognize.py`
+2. `align.py`
+3. `alignment_stats.py`
+4. `create_hf_dataset.py`
+5. `infer_asr.py`
+
+---
+
+## Assets
+
+The main assets include:
+
+- `cpu_job.template`
+- `gpu_job.template`
+
+These templates are used to create SLURM jobs for parallel scripts. You can specify resource requirements and logging directories in the templates.
+
+
