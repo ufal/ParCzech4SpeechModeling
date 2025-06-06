@@ -1,0 +1,16 @@
+
+template_script: /lnet/work/people/stankov/parczech/assets/gpu_job.template
+script: /lnet/work/people/stankov/parczech/scripts/infer_asr.py
+
+job_name: w2v_infer_asr
+cpus: 12
+mem: 40
+n_gpus: 1
+
+bash_script_dir: /lnet/work/people/stankov/parczech/slurm-scripts/${job_name}
+slurm_logs_dir: /lnet/work/people/stankov/parczech/slurm-logs/${job_name}
+
+parquet_dir: /lnet/troja/work/people/stankov/parczech4speechmodeling/huggingface/beta_v1_continuous/metadata
+params: 
+  target_class: infer_asr.Wav2VecInfer
+  output_dir: /lnet/troja/work/people/stankov/parczech4speechmodeling/huggingface/beta_v1_continuous/predictions/

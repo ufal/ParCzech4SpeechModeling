@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH -J {job_id}
+#SBATCH -D /lnet/work/people/stankov/parczech/slurm-logs/{job_name}
+#SBATCH -o {job_id}.out
+#SBATCH -e {job_id}.err
+#SBATCH -p gpu-ms,gpu-troja
+#SBATCH --cpus-per-task={cpus}
+#SBATCH --mem={mem}G
+#SBATCH --gres=gpu:{n_gpus}
+#SBATCH --exclude=tdll-8gpu3,tdll-8gpu4,dll-10gpu2,dll-8gpu4,dll-8gpu5,dll-8gpu1,dll-8gpu2,dll-4gpu1,dll-4gpu2  # Exclude P5000, 1080Ti, A4000, RTX5000 nodes
+
+conda_path=/lnet/work/people/stankov/miniconda3/bin/conda
+export PATH=$conda_path:$PATH
+eval "$(conda shell.bash hook)"
+conda activate parczech
+
+nvidia-smi
+
+echo "Running on node: $(hostname). Job started at: $(date)"
+
+python {script} {params}
+
+echo "Finished at $(date)"

@@ -1,0 +1,8 @@
+df_path: ???
+batch_size: 1
+num_workers: ???
+device: "cuda"
+output_dir: "/lnet/troja/work/people/stankov/parczech4speechmodeling/huggingface/beta_v1/predictions/"
+model:
+  _target_: "infer_asr.WhisperWithNumbersInfer"
+  device: "cuda"
