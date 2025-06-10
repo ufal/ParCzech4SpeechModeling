@@ -1,0 +1,17 @@
+vertical_dir: /net/work/people/kopp/ParCzech4SpeechModeling/data/ParCzechTSV/tsv
+vocab2files: /lnet/troja/work/people/stankov/parczech4speechmodeling/vocab2files.pkl
+vocab_counter: /lnet/troja/work/people/stankov/parczech4speechmodeling/vocab_counter.pkl
+non_token_vocab_counter: /lnet/troja/work/people/stankov/parczech4speechmodeling/non_token_vocab_counter.pkl
+token_column: token_str
+is_token_word_column: is_token_word
+vert_columns: [
+  "token_str",
+  "token_id",
+  "speaker_id",
+  "speech_id",
+  "date",
+  "is_no_space_after_token",
+  "is_token_word",
+  "start_time",
+  "end_time",
+]
