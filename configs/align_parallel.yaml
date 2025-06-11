@@ -1,8 +1,15 @@
-output_directory: /lnet/troja/work/people/stankov/parczech4speechmodeling/alignment
+template_script: /lnet/work/people/stankov/parczech/assets/cpu_job.template
+script: /lnet/work/people/stankov/parczech/scripts/align.py
+
+job_name: align
+cpus: 8
+mem: 24
+
+bash_script_dir: /lnet/work/people/stankov/parczech/slurm-scripts/${job_name}
+slurm_logs_dir: /lnet/work/people/stankov/parczech/slurm-logs/${job_name}
+
 recognized_base_path: /lnet/troja/work/people/stankov/parczech4speechmodeling/audio/psp
 
-bash_script_dir: /lnet/work/people/stankov/parczech/slurm-scripts/alignment/
-slurm_logs_dir: /lnet/work/people/stankov/parczech/slurm-logs/alignment/
-template_script: /lnet/work/people/stankov/parczech/assets/align_job.template
-
-model_names: ["default_whisperlv2_with_numerals", "default_whisperlv2_no_numerals"]
+params:
+  output_directory: /lnet/troja/work/people/stankov/parczech4speechmodeling/alignment
+  model_names: ["default_whisperlv2_with_numerals", "default_whisperlv2_no_numerals"]
