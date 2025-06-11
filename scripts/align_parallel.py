@@ -23,7 +23,7 @@ def main(cfg):
             params = "year={y} month={m} model_names={mn} output_directory={od}".format(  # noqa: UP032
                 y=year,
                 m=month,
-                mn=cfg.model_names,
+                mn="[" + ",".join(cfg.model_names) + "]",
                 od=cfg.output_directory,
             )
 
