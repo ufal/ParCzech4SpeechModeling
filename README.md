@@ -49,7 +49,7 @@ Run the pipeline in the following order:
 
 1. `recognize.py`
 2. `align.py`
-3. `alignment_stats.py`
+3. `create_version_with_stats.py`
 4. `create_hf_dataset.py`
 5. `infer_asr.py`
 
