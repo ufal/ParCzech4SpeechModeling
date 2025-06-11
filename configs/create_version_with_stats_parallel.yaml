@@ -1,0 +1,17 @@
+template: "/lnet/work/people/stankov/parczech/assets/cpu_job.template"
+script: "/lnet/work/people/stankov/parczech/scripts/create_version_with_stats.py"
+
+job_name: cverstats__${directory_name}
+cpus: 8
+mem: 16
+
+slurm_scripts_dir: /lnet/work/people/stankov/parczech/slurm-scripts/${job_name}
+slurm_log_dir: /lnet/work/people/stankov/parczech/slurm-logs/${job_name}
+
+overwrite: False
+model_names: ["default_whisperlv2_with_numerals", "default_whisperlv2_no_numerals"]
+alignment_dir: /lnet/troja/work/people/stankov/parczech4speechmodeling/alignment/
+
+directory_name: ???
+output_directory: /lnet/troja/work/people/stankov/parczech4speechmodeling/segments/${directory_name}
+

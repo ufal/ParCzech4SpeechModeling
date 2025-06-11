@@ -38,7 +38,7 @@ Below is a list of the core (non-parallel) scripts for processing the ParCzech4 
 
 - `recognize.py` — Performs ASR on the dataset using WhisperX and Wav2Vec 2.0.
 - `align.py` — Aligns recognized texts with official transcripts at the word level.
-- `alignment_stats.py` — Computes statistics on alignment quality for a specified version of the dataset (segmented or unsegmented). Note: only a subset of data is used at this stage.
+- `create_version_with_stats.py` — Computes statistics on alignment quality for a specified version of the dataset (segmented or unsegmented). Use these statistics to create and filter the specified version. You need to know the values for filtering beforehand. Note: statistics are computed on a subset of the data at this stage.
 - `create_hf_dataset.py` — Creates a Hugging Face dataset by extracting aligned segments and applying corpus-level filtering.
 - `infer_asr.py` — Runs an ASR model on the final dataset for quality verification and removal of misaligned segments.
 - `get_duration.py` — Computes durations of dataset segments.

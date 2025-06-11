@@ -1,0 +1,27 @@
+alignment_dir: /lnet/troja/work/people/stankov/parczech4speechmodeling/alignment
+output_directory: ???
+overwrite: False
+parquet_file: ???
+model_names: ???
+segmenter:
+  _target_: "parczech.alignment_stats.ContinuousSegmenter"
+  gap_word: "<gap>"
+  vert_col: "vert_file"
+  token_col: "token_str"
+  token_id_col: "token_id"
+  recognized_col: "word"
+  start_col: "start"
+  end_col: "end"
+  speakers_col: "speaker_id"
+  edit_distance_col: "edit_distance"
+  no_ws_after_col: "is_no_space_after_token"
+  score_col: "score"
+  punc_list: ['¨', '—', '·', '´', '‘', '…', "'", '(', ';', ')', '!', '"', ':', '?', '-', '.', ',']
+  special_symbols: ['/', '&', '|', '*', '>', '<', '\\', '§', '%', '+', '×', '|', '=', '°', '*', '§§', '@', '$', '£', '¥']
+  allowed_ending_punct: ['.', '!', '?', '…']
+  min_word_count: 5
+  is_token_word_col: "is_token_word"
+  avg_true_char_dur_lb: 0.035
+  avg_true_char_dur_ub: 1.0
+  norm_edit_dist_ub: 0.35
+extraction_params:
