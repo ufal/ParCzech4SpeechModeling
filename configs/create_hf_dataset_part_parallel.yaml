@@ -1,0 +1,13 @@
+mem: 48
+cpus: 8
+script: "/lnet/work/people/stankov/parczech/scripts/create_hf_dataset_part.py"
+template: "/lnet/work/people/stankov/parczech/assets/cpu_job.template"
+slurm_scripts_dir: /lnet/work/people/stankov/parczech/slurm-scripts/${job_name}
+slurm_log_dir: /lnet/work/people/stankov/parczech/slurm-logs/${job_name}
+job_name: create_hf_dataset_part_${params.inp_version}_to_${params.out_version}
+segment_dir: /lnet/troja/work/people/stankov/parczech4speechmodeling/segments/${params.inp_version}/${params.model_name}
+params:
+    model_name: default_whisperlv2_with_numerals
+    overwrite: False
+    out_version: ???
+    inp_version: ???

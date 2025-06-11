@@ -1,0 +1,40 @@
+data_folder: /lnet/troja/work/people/stankov/parczech4speechmodeling/segments/
+output_folder: /lnet/troja/work/people/stankov/parczech4speechmodeling/huggingface/
+mp3_folder: /lnet/troja/work/people/stankov/parczech4speechmodeling/audio/psp
+speakers_mapping_yaml: /lnet/troja/work/people/stankov/parczech4speechmodeling/test_dev_speakers.yaml
+parquet_file: ???
+out_version: ???
+inp_version: ???
+model_name: ???
+overwrite: False
+audio_format: "flac"
+punc_list: ['¨', '—', '·', '´', '‘', '…', "'", '(', ';', ')', '!', '"', ':', '?', '-', '.', ',']
+filter: >-
+  seg_edit_dist < 10 
+  & n_true_words == n_rec_words 
+  & speaker_text_cnt < 2 
+  & align_edit_dist_max < 5 
+  & is_correct_end 
+  & is_correct_start 
+  & true_char_avg_dur < 0.14 
+  & true_char_avg_dur > 0.06
+
+save_columns: [
+  "true_text",
+  "rec_text",
+  "split",
+  "speakers",
+  "dur",
+  "seg_id",
+  "vert",
+  "parquet",
+  "n_numbers",
+  "n_true_words",
+  "seg_edit_dist",
+  "align_edit_dist_max",
+  "true_char_avg_dur",
+  "start_token_id",
+  "end_token_id",
+  "speaker_text_cnt"
+]
+
