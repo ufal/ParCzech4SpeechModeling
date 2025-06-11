@@ -1,0 +1,129 @@
+czech_ordinal_numbers:
+  1: první
+  2: druhý
+  3: třetí
+  4: čtvrtý
+  5: pátý
+  6: šestý
+  7: sedmý
+  8: osmý
+  9: devátý
+  10: desátý
+  11: jedenáctý
+  12: dvanáctý
+  13: třináctý
+  14: čtrnáctý
+  15: patnáctý
+  16: šestnáctý
+  17: sedmnáctý
+  18: osmnáctý
+  19: devatenáctý
+  20: dvacátý
+  21: dvacátý první
+  22: dvacátý druhý
+  23: dvacátý třetí
+  24: dvacátý čtvrtý
+  25: dvacátý pátý
+  26: dvacátý šestý
+  27: dvacátý sedmý
+  28: dvacátý osmý
+  29: dvacátý devátý
+  30: třicátý
+  31: třicátý první
+  32: třicátý druhý
+  33: třicátý třetí
+  34: třicátý čtvrtý
+  35: třicátý pátý
+  36: třicátý šestý
+  37: třicátý sedmý
+  38: třicátý osmý
+  39: třicátý devátý
+  40: čtyřicátý
+  41: čtyřicátý první
+  42: čtyřicátý druhý
+  43: čtyřicátý třetí
+  44: čtyřicátý čtvrtý
+  45: čtyřicátý pátý
+  46: čtyřicátý šestý
+  47: čtyřicátý sedmý
+  48: čtyřicátý osmý
+  49: čtyřicátý devátý
+  50: padesátý
+
+czech_reversed_cardinal_numbers:
+  21: jedenadvacet
+  22: dvaadvacet
+  23: třiadvacet
+  24: čtyřiadvacet
+  25: pětadvacet
+  26: šestadvacet
+  27: sedmadvacet
+  28: osmadvacet
+  29: devětadvacet
+  31: jedenatřicet
+  32: dvaatřicet
+  33: třiatřicet
+  34: čtyřiatřicet
+  35: pětatřicet
+  36: šestatřicet
+  37: sedmatřicet
+  38: osmatřicet
+  39: devětatřicet
+  41: jedenácticet
+  42: dvaačtyřicet
+  43: třiačtyřicet
+  44: čtyřiačtyřicet
+  45: pětačtyřicet
+  46: šestačtyřicet
+  47: sedmačtyřicet
+  48: osmačtyřicet
+  49: devětačtyřicet
+  51: jedenapadesát
+  52: dvaapadesát
+  53: třiapadesát
+  54: čtyřiapadesát
+  55: pětapadesát
+  56: šestapadesát
+  57: sedmapadesát
+  58: osmapadesát
+  59: devětapadesát
+  61: jednašedesát
+  62: dvaašedesát
+  63: třiašedesát
+  64: čtyřiašedesát
+  65: pětašedesát
+  66: šestašedesát
+  67: sedmašedesát
+  68: osmašedesát
+  69: devětašedesát
+  71: jedenasedmdesát
+  72: dvaasedmdesát
+  73: třiasedmdesát
+  74: čtyřiasedmdesát
+  75: pětasedmdesát
+  76: šestasedmdesát
+  77: sedmasedmdesát
+  78: osmasedmdesát
+  79: devětasedmdesát
+  81: jednaosmdesát
+  82: dvaaosmdesát
+  83: třiaosmdesát
+  84: čtyřiaosmdesát
+  85: pětaosmdesát
+  86: šestaosmdesát
+  87: sedmaosmdesát
+  88: osmaosmdesát
+  89: devětaosmdesát
+  91: jedenadevadesát
+  92: dvaadevadesát
+  93: třiadevadesát
+  94: čtyřiadevadesát
+  95: pětadevadesát
+  96: šestadevadesát
+  97: sedmadevadesát
+  98: osmadevadesát
+  99: devětadevadesát
+
+
+
+
